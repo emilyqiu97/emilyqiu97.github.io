@@ -2,3 +2,4 @@
 *.pdf
 *.twb
 key.txt
+__pycache__
