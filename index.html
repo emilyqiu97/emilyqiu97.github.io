@@ -3,7 +3,6 @@
 <head>
   <title>D3 Bar Chart</title>
   <script src="https://cdn.jsdelivr.net/npm/d3@7.1.1/dist/d3.min.js"></script>
-  <!-- <script src="https://unpkg.com/@upsetjs/bundle@1.11.0/dist/upsetjs.umd.production.min.js"></script> -->
   <style>
     /* CSS styles for the scatter plot */
     .dot {
@@ -20,6 +19,36 @@
 
 </head>
 <body>
-  <script src="./final_proj.js"></script>
+  <script src="./plot1.js"></script>
+  <script src="./plot2.js"></script>
+  <script src="./plot3.js"></script>
+  <script src="./plot4.js"></script>
+  <div class="plot1">
+    <div class="plot-area" style="margin-bottom:5px"></div>
+    <div style="margin-left: 14%; margin-top:5px;">
+      X-axis:
+      <select class="x-axis">
+        <option value="math score" selected>Math</option>
+        <option value="reading score">Reading</option>
+        <option value="writing score">Writing</option>
+      </select>&nbsp;&nbsp;
+      Y-axis:
+      <select class="y-axis">
+        <option value="math score">Math</option>
+        <option value="reading score" selected>Reading</option>
+        <option value="writing score">Writing</option>
+      </select>
+    </div>
+  </div>
+  <div class="plot2">
+    <div class="plot-area"></div>
+  </div>
+  <div class="plot3">
+    <div class="plot-area"></div>
+  </div>
+  <div class="plot4">
+    <div class="plot-area"></div>
+  </div>
+
 </body>
 </html>

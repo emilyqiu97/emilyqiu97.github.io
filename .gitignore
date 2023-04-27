@@ -3,3 +3,4 @@
 *.twb
 key.txt
 __pycache__
+.DS_Store

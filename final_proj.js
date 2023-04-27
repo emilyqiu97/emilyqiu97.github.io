@@ -72,6 +72,31 @@ d3.csv("StudentsPerformance.csv").then(function(data) {
     .style("font-size", "16px")
     .text("Relationship between Math Score and Reading Score");
 
+  // add the legend
+  var color = d3.scaleOrdinal()
+    .domain(["female", "male"])
+    .range(["red", "blue"]);
+
+  svg.append("g")
+    .attr("class", "legend")
+    .attr("transform", "translate(" + width + "," + (height - 50) + ")")
+    .selectAll("circle")
+    .data(color.domain())
+    .enter()
+    .append("circle")
+    .attr("cx", 0)
+    .attr("cy", function(d, i) { return i * 20; })
+    .attr("r", dot_size)
+    .style("fill", color);
+
+  svg.selectAll(".legend")
+    .append("text")
+    .attr("x", 20)
+    .attr("y", function(d, i) { return i * 20 + 12; })
+    .text(function(d) { return d; })
+    .attr("text-anchor", "start")
+    .attr("font-size", "12px");
+
 });
 
 
