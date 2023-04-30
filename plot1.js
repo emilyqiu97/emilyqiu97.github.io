@@ -1,12 +1,9 @@
-var screenWidth = window.innerWidth || document.documentElement.clientWidth;
-var gap = 50;
-var individual_width = (screenWidth - gap) / 2;
+let width_ratio = 0.95;
 var dot_size = 3;
 
 // set the dimensions and margins of the graph
-var margin = {top: 60, right: 30, bottom: 40, left: 30},
-    width = individual_width - margin.left - margin.right,
-    height = 550 - margin.top - margin.bottom;
+var margin = {top: 60, right: 30, bottom: 40, left: 30}
+var height = 600;
 
 let title_map = {
   "math score": "Math Score",
@@ -16,19 +13,23 @@ let title_map = {
 
 // The first graph
 d3.csv("StudentsPerformance.csv").then(function(data) {
+  let container_width = d3.select(".plot1").node().clientWidth;
+  let svg_width = width_ratio * container_width;
 
   var svg = d3.select(".plot1 .plot-area")
-    .append("svg")
-      .attr("width", width)
+      .append("svg")
+      .attr("width", svg_width)
       .attr("height", height + margin.top + margin.bottom)
 
   var area = svg.append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("class", "area")
+      .attr("width", svg_width * width_ratio)
+      .attr("transform", "translate(" + (margin.left - 15) + "," + margin.top + ")");
 
   // add x-axis
   var x = d3.scaleLinear()
     .domain([0, 100])
-    .range([0, width - margin.left - margin.right - gap/2]);
+    .range([0, svg_width * width_ratio - 5]);
 
   area.append("g")
     .attr("transform", "translate(" + margin.left + "," + height + ")")
@@ -60,14 +61,14 @@ d3.csv("StudentsPerformance.csv").then(function(data) {
 
   function add_title(x_axis, y_axis) {// add chart title
     title = svg.append("text")
-      .attr("x", width / 2)
+      .attr("x", svg_width / 2)
       .attr("y", margin.top/2)
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
       .text(`Relationship between ${title_map[x_axis]} and ${title_map[y_axis]} Among Genders`)
 
     x_lab = svg.append("text")
-      .attr("x", width / 2)
+      .attr("x", svg_width / 2)
       .attr("y", height + margin.top + margin.bottom - 5)
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
@@ -116,7 +117,7 @@ d3.csv("StudentsPerformance.csv").then(function(data) {
 
   const legend_tag = area.append("g")
     .attr("class", "legend")
-    .attr("transform", "translate(" + (width - 100) + "," + (height - 150) + ")")
+    .attr("transform", "translate(" + (svg_width - 100) + "," + (height - 150) + ")")
   
   legend_tag.selectAll("circle")
     .data(legends)

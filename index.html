@@ -15,17 +15,26 @@
         font-size: 16px;
         font-weight: bold;
     }
+    svg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    svg g.area {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 </style>
 
 </head>
-<body>
+  <script src="./utils.js"></script>
   <script src="./plot1.js"></script>
   <script src="./plot2.js"></script>
   <script src="./plot3.js"></script>
-  <script src="./plot4.js"></script>
   <div class="plot1">
     <div class="plot-area" style="margin-bottom:5px"></div>
-    <div style="margin-left: 14%; margin-top:5px;">
+    <div style="margin-left: 40%; margin-top:10px;">
       X-axis:
       <select class="x-axis">
         <option value="math score" selected>Math</option>
@@ -40,15 +49,21 @@
       </select>
     </div>
   </div>
-  <div class="plot2">
+  <br /><br /><br />
+  <div class="plot2" style="margin-top: 20px;">
+    <div class="plot-area"></div>
+    <div style="margin-left: 40%; margin-top:10px;">
+      X-axis:
+      <select class="x-axis">
+        <option value="parental_lvl" selected>Parental level of education</option>
+        <option value="gender">Gender</option>
+        <option value="race">Race/Ethnicity</option>
+      </select>
+    </div>
+  </div>
+  <br /><br /><br />
+  <div class="plot3" style="margin-top: 20px;">
     <div class="plot-area"></div>
   </div>
-  <div class="plot3">
-    <div class="plot-area"></div>
-  </div>
-  <div class="plot4">
-    <div class="plot-area"></div>
-  </div>
-
 </body>
 </html>
